@@ -3,7 +3,7 @@
     <Options/>
     <Implementation title="impl1" dir="impl1" description="impl1" synthesis="synplify" default_strategy="Strategy1">
         <Options def_top="glue"/>
-        <Source name="../../../../lattice/Z-pdaXrom/top_bram.vhd" type="VHDL" type_short="VHDL">
+        <Source name="../../../../lattice/Z-pdaXrom/top_sram.vhd" type="VHDL" type_short="VHDL">
             <Options top_module="glue"/>
         </Source>
         <Source name="../../../../cpu/alu.vhd" type="VHDL" type_short="VHDL">
@@ -63,9 +63,6 @@
         <Source name="../../../../generic/bootloader/defs_bootblock.vhd" type="VHDL" type_short="VHDL">
             <Options/>
         </Source>
-        <Source name="../../../../generic/glue_bram.vhd" type="VHDL" type_short="VHDL">
-            <Options/>
-        </Source>
         <Source name="../../../../generic/reg1w2r.vhd" type="VHDL" type_short="VHDL">
             <Options/>
         </Source>
@@ -79,6 +76,27 @@
             <Options/>
         </Source>
         <Source name="../../../../lattice/Z-pdaXrom/clocks/clkgen.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../../../soc/sram.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../../../soc/sram_pack.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../../../cpu/cache.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../../../soc/pcm.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../../../soc/fb.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../../../soc/cvbs.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../../../generic/bram_true2p_1clk.vhd" type="VHDL" type_short="VHDL">
             <Options/>
         </Source>
         <Source name="impl1/impl1.xcf" type="Programming Project File" type_short="Programming">

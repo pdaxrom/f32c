@@ -8,20 +8,21 @@ GNU_MIRROR=ftp://ftp.gnu.org/gnu
 BINUTILS_URL=${GNU_MIRROR}/binutils/binutils-2.29.tar.xz
 GCC_URL=${GNU_MIRROR}/gcc/gcc-7.2.0/gcc-7.2.0.tar.xz
 
-BINUTILS_SRC_DIR=~/github/gnu/binutils
-GCC_SRC_DIR=~/github/gnu/gcc
+BINUTILS_SRC_DIR=~/Work/github/gnu/binutils
+GCC_SRC_DIR=~/Work/github/gnu/gcc
 
-F32C_SRC_DIR=~/github/f32c
+F32C_SRC_DIR=~/Work/github/f32c
 #F32C_TOOLCHAIN_DST_DIR=/usr/local
 F32C_TOOLCHAIN_DST_DIR=/tmp/f32c
 
+TOP_DIR=$PWD
 
 # XXX impossible to build statically linked binutils?
 # F32C_MAKEOPTIONS="LDFLAGS=-static"
 
-SUDO=sudo
+SUDO=
 MAKE=make
-MAKE_JOBS=2
+MAKE_JOBS=3
 
 CC=gcc
 CXX=g++
@@ -47,7 +48,7 @@ fi
 #
 # Check for prerequisites
 #
-for PROG in git wget tar patch $MAKE bison diff cmp makeinfo gcc g++ install
+for PROG in git wget tar patch $MAKE bison diff cmp gcc g++ install
 do
     if [ "`command -v $PROG`" == "" ]; then
 	echo $PROG required but not installed, aborting!
@@ -69,7 +70,7 @@ then
     tar -xf *
     rm *.tar*
     mv */* .
-    patch -p0 < ${F32C_SRC_DIR}/src/compiler/patches/binutils-2.26.diff
+    patch -p0 < ${TOP_DIR}/patches/binutils-2.26.diff
 fi
 
 if [ ! -d ${GCC_SRC_DIR} ]
@@ -83,7 +84,7 @@ then
     rm *.tar*
     mv */* .
     ./contrib/download_prerequisites 
-    patch -p0 < ${F32C_SRC_DIR}/src/compiler/patches/gcc-6.1.0.diff
+    patch -p0 < ${TOP_DIR}/patches/gcc-6.1.0.diff
 fi
 
 
@@ -93,7 +94,7 @@ fi
 
 ${SUDO} mkdir -p ${F32C_TOOLCHAIN_DST_DIR}
 
-for TARGET_ARCH in riscv32 mips
+for TARGET_ARCH in mips
 do
     for SRC_DIR in ${BINUTILS_SRC_DIR} ${GCC_SRC_DIR}
     do

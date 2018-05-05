@@ -1,4 +1,4 @@
-#!/usr/local/bin/tclsh8.6
+#!/usr/bin/tclsh8.6
 #
 # Copyright 2010 - 2014 Marko Zec, University of Zagreb
 #

@@ -51,7 +51,7 @@ entity sram is
 	-- Inbound multi-port bus connections
 	bus_in: in sram_port_array;
 	-- To physical SRAM signals
-	sram_a: out std_logic_vector(18 downto 0);
+	sram_a: out std_logic_vector(19 downto 0);
 	sram_d: inout std_logic_vector(15 downto 0);
 	sram_wel, sram_lbl, sram_ubl: out std_logic
     );
@@ -66,7 +66,7 @@ architecture Structure of sram is
     constant C_phase_write_terminate: integer := C_wait_cycles * 2 - 1;
 
     -- Physical interface registers
-    signal R_a: std_logic_vector(18 downto 0);		-- to SRAM
+    signal R_a: std_logic_vector(19 downto 0);		-- to SRAM
     signal R_d: std_logic_vector(15 downto 0);		-- to SRAM
     signal R_wel, R_lbl, R_ubl: std_logic;		-- to SRAM
     signal R_write_cycle: boolean;			-- internal
@@ -80,7 +80,7 @@ architecture Structure of sram is
     signal addr_strobe: std_logic;			-- from CPU bus
     signal write: std_logic;				-- from CPU bus
     signal byte_sel: std_logic_vector(3 downto 0);	-- from CPU bus
-    signal addr: std_logic_vector(19 downto 2);		-- from CPU bus
+    signal addr: std_logic_vector(20 downto 2);		-- from CPU bus
     signal data_in: std_logic_vector(31 downto 0);	-- from CPU bus
 
     -- Arbiter registers
@@ -195,7 +195,7 @@ begin
 			end if;
 			-- we can safely acknowledge the write immediately
 			R_ack_bitmap(R_next_port) <= '1';
-			R_snoop_addr(19 downto 2) <= addr; -- XXX
+			R_snoop_addr(20 downto 2) <= addr; -- XXX
 			R_snoop_cycle <= '1';
 		    end if;
 		end if;
@@ -226,7 +226,7 @@ begin
 			end if;
 			-- we can safely acknowledge the write immediately
 			R_ack_bitmap(R_next_port) <= '1';
-			R_snoop_addr(19 downto 2) <= addr; -- XXX
+			R_snoop_addr(20 downto 2) <= addr; -- XXX
 			R_snoop_cycle <= '1';
 		    end if;
 		else

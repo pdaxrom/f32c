@@ -134,7 +134,7 @@ clean_lib_objs:
 	rm -fr ${OBJDIR}
 
 all_libs:
-	${MAKE} ARCH=riscv libs
+#	${MAKE} ARCH=riscv libs
 	${MAKE} ARCH=mips ENDIANFLAGS=-EL libs
 	${MAKE} ARCH=mips ENDIANFLAGS=-EL NOMUL=true libs
 	${MAKE} ARCH=mips ENDIANFLAGS=-EL MIN=true libs

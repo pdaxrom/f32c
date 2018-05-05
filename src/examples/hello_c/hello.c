@@ -24,7 +24,9 @@ main(void)
 {
 	int in, out = 0;
 
-	printf("Hello, f32c/%s world!\n", arch);
+	while (1) {
+	    printf("Hello, f32c/%s world!\n", arch);
+	}
 
 	do {
 		OUTB(IO_LED, out >> 20);
